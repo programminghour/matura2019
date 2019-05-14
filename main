@@ -30,7 +30,7 @@ int sill(int li)
 int sil(int li)
 {
     int done = li;
-    int suma = 0;
+    int suma = 1;
     while(done>=10)
     {
         suma+= sill(done%10);
