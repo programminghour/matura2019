@@ -1,0 +1,61 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int tab[500];
+
+int pot(int tab[500])
+{
+    int cal=0;
+
+    for(int i=0; i < 499; i++)
+        if(tab[i]%3 == 0 )
+             for(int j=1; j <= tab[i]; j=j*3)
+                if(j==tab[i])
+                    cal++;
+
+    return cal;
+}
+
+int sill(int li)
+{
+    int suma = 1;
+    for(int i=1; i <= li; i++)
+        suma= suma*i;
+
+    return suma;
+}
+
+int sil(int li)
+{
+    int done = li;
+    int suma = 0;
+    while(done>=10)
+    {
+        suma+= sill(done%10);
+        done=done/10;
+
+    }
+    //cout<<suma<<endl;
+    return suma;
+}
+
+int main()
+{
+    ifstream abc("przyklad.txt");
+
+    for(int i=0; i < 499; i++)
+        abc>>tab[i];
+
+    cout<<pot(tab)<<endl;
+
+    for(int i=0; i < 499; i++)
+        if(sil(tab[i]) == tab[i])
+            cout<<tab[i]<<endl;
+
+
+
+
+    return 0;
+}
