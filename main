@@ -41,6 +41,70 @@ int sil(int li)
     return suma;
 }
 
+int NWD(int a, int b)
+{
+    while(a != b)
+    {
+        if(a>=b)
+            a=a-b;
+        else
+            b=b-a;
+    }
+
+    return a;
+}
+
+void trzy(int tab[500])
+{
+    int a = 0;
+    int b = 1;
+    //int nwd = 0;
+    int dl;
+    int ndl = 1;
+    int p = 0;
+    int maks = 1;
+
+    for(int i=0; i < 498; i++){
+            cout<<"//"<<a<<b<<endl;
+            b = a+1;
+            int nwd = NWD(tab[a],tab[b]);
+            dl=2;
+    for(int j=0; j < 500; j++)
+    {cout<<endl;
+        int nnwd;
+        if(j!=0){
+
+            nnwd = NWD(tab[nwd],tab[b]);
+        }
+         else
+            nnwd = nwd;
+
+
+        if(nnwd>1)
+        {
+            if(dl>ndl)
+            {cout<<"ooooooooooooooooo"<<endl;
+                maks = nnwd;
+                p = a;
+                ndl = dl;
+            }
+
+            dl++;
+            nwd=nnwd;
+
+            b++;
+        }
+        else
+        {
+            a++;
+            break;
+        }
+    }cout<<p<<endl;
+    }
+
+     cout<<p<<" "<<dl<<" "<<maks<<endl;
+}
+
 int main()
 {
     ifstream abc("przyklad.txt");
@@ -54,7 +118,7 @@ int main()
         if(sil(tab[i]) == tab[i])
             cout<<tab[i]<<endl;
 
-
+    trzy(tab);
 
 
     return 0;
